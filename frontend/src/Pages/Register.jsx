@@ -9,6 +9,8 @@ import axios from "axios";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../utils/Firebase";
 import { userDataContext } from "../context/UserContext";
+import { toast } from "react-toastify";
+import Loading from "../components/Loading";
 
 const Register = () => {
   let [showPassword, setShowPassword] = useState(false);
@@ -17,21 +19,33 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { getCurrentUser } = useContext(userDataContext);
+  let [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
   const handleRegister = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
+      if (!name || !email || !password) {
+        toast.error("All fields are required");
+        setLoading(false);
+        return;
+      }
       const result = await axios.post(
         serverUrl + "/api/auth/register",
         { name, email, password },
         { withCredentials: true }
       );
       console.log(result.data);
+      setLoading(false);
       getCurrentUser();
-      navigate("/");
+      toast.success("User Registration Successful");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     } catch (error) {
       console.log("error", error.message);
+      toast.error("User Registration Failed");
     }
   };
 
@@ -123,10 +137,10 @@ const Register = () => {
             )}
 
             <button className="w-[100%] h-[50px] bg-[#7e86f1e8] border-[1px] border-[#96969635] rounded-lg shadow-lg px-[20px] font-semibold mt-4">
-              Create Account
+              {loading ? <Loading /> : "Create Account"}
             </button>
             <p className="flex gap-[10px]">
-              You have any accout?
+              Already have an accout?
               <span
                 className="text-purple-600 cursor-pointer"
                 onClick={() => navigate("/login")}

@@ -9,6 +9,8 @@ import axios from "axios";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../utils/Firebase";
 import { userDataContext } from "../context/UserContext.jsx";
+import Loading from "../components/Loading.jsx";
+import { toast } from "react-toastify";
 
 const Login = () => {
   let [showPassword, setShowPassword] = useState(false);
@@ -16,9 +18,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { serverUrl } = useContext(authDataContext);
   const { getCurrentUser } = useContext(userDataContext);
+  let [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
   const handleLogin = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       let result = await axios.post(
@@ -27,10 +31,13 @@ const Login = () => {
         { withCredentials: true }
       );
       console.log(result.data);
+      setLoading(false);
       getCurrentUser();
       navigate("/");
+      toast.success("User Login Successful");
     } catch (error) {
       console.log("login error", error.message);
+      toast.error("User Login Failed");
     }
   };
 
@@ -113,7 +120,7 @@ const Login = () => {
             )}
 
             <button className="w-[100%] h-[50px] bg-[#7e86f1e8] border-[1px] border-[#96969635] rounded-lg shadow-lg px-[20px] font-semibold mt-4">
-              Login Account
+              {loading ? <Loading /> : "Login"}
             </button>
             <p className="flex gap-[10px]">
               You don't have any accout?

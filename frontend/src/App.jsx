@@ -15,12 +15,14 @@ import PlaceOrder from "./Pages/PlaceOrder";
 import Order from "./Pages/Order";
 import NotFound from "./Pages/NotFound";
 import Ai from "./components/Ai";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { userData } = useContext(userDataContext);
   const location = useLocation();
   return (
     <>
+      <ToastContainer />
       {userData && <Nav />}
       <Routes>
         <Route
