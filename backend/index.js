@@ -39,5 +39,4 @@ app.listen(port, () => {
 })
 
 
-// rzp_test_5AjalRiAE5Y806 test key Id   
-// Pisg9LHjXsBrpliCCVlHdaKS key_secret
+
