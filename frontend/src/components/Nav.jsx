@@ -29,7 +29,6 @@ const Nav = () => {
         withCredentials: true,
       });
       console.log(result.data);
-      getCurrentUser();
       navigate("/login");
     } catch (error) {
       console.log(error);
