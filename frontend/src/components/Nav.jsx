@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 // import { getCurrentuser } from "../../../backend/controllers/userController";
 
 const Nav = () => {
-  let { getCurrentUser, userData } = useContext(userDataContext);
+  let { getCurrentUser, userData ,setUserData} = useContext(userDataContext);
   let { serverUrl } = useContext(authDataContext);
   const { showSearch, setShowSearch, search, setSearch, getCartCount } =
     useContext(shopDataContext);
@@ -32,7 +32,7 @@ const Nav = () => {
       console.log(result.data);
        // setUserData(null); 
        toast.success(result.data.message || "logout successfull")
-       setUserData(""); 
+       setUserData(null); 
       navigate("/login");
     } catch (error) {
       console.log(error);
