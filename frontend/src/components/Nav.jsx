@@ -12,6 +12,7 @@ import { IoMdHome } from "react-icons/io";
 import { HiOutlineCollection } from "react-icons/hi";
 import { MdContacts } from "react-icons/md";
 import { shopDataContext } from "../context/ShopContext";
+import { toast } from "react-toastify";
 // import { getCurrentuser } from "../../../backend/controllers/userController";
 
 const Nav = () => {
@@ -30,6 +31,7 @@ const Nav = () => {
       });
       console.log(result.data);
        // setUserData(null); 
+       toast.success(result.data.message || "logout successfull")
        setUserData(""); 
       navigate("/login");
     } catch (error) {
