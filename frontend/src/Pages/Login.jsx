@@ -119,7 +119,7 @@ const Login = () => {
               />
             )}
 
-            <button className="w-[100%] h-[50px] bg-[#7e86f1e8] border-[1px] border-[#96969635] rounded-lg shadow-lg px-[20px] font-semibold mt-4">
+            <button className="w-[100%] h-[50px] bg-[#7e86f1e8] border-[1px] border-[#96969635] rounded-lg shadow-lg px-[20px] font-semibold cursor-pointer mt-4">
               {loading ? <Loading /> : "Login"}
             </button>
             <p className="flex gap-[10px]">
