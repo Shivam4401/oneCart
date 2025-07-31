@@ -40,7 +40,7 @@ const Nav = () => {
   };
   return (
     <>
-      <div className="w-[100vw] h-[70px] bg-[#ecfafaec] shadow-md shadow-black z-10 sticky top-0 flex items-center justify-between px-8 ">
+      <div className="w-[99.5vw] h-[70px] bg-[#ecfafaec] shadow-md shadow-black z-10 sticky top-0 flex items-center justify-between px-8 ">
         <div className="flex items-center justify-center gap-4 cursor-pointer">
           <img className="w-7 " src={logo} alt="" />
           <h1 className="text-xl font-semibold">OneCart</h1>
