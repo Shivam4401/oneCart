@@ -31,11 +31,11 @@ const UserContext = ({ children }) => {
   const value = { userData, setUserData, getCurrentUser };
 
   return (
-    <div>
+  
       <userDataContext.Provider value={value}>
         {children}
       </userDataContext.Provider>
-    </div>
+  
   );
 };
 
