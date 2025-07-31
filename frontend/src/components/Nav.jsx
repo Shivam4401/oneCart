@@ -29,7 +29,8 @@ const Nav = () => {
         withCredentials: true,
       });
       console.log(result.data);
-       setUserData(null); 
+       // setUserData(null); 
+       setUserData(""); 
       navigate("/login");
     } catch (error) {
       console.log(error);
